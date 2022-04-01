@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { signInWithGoogle } from '../services/firebase';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -12,21 +13,22 @@ const Container = styled('div')({
   height: '100vh',
 });
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
   return (
     <Container>
       <Head>
-        <title>Home | Linked-todo</title>
+        <title>Login | Linked-todo</title>
       </Head>
 
-      <Typography variant="h1">
-        Home page!
+      <Typography variant="h3">
+        Login page!
       </Typography>
-      <Button variant="contained" color="warning">
-        Logout
+      <Button variant="contained" onClick={signInWithGoogle}>
+        Sign in with google
       </Button>
     </Container>
   )
 }
 
-export default Home
+export default Login;
+
