@@ -1,4 +1,4 @@
-import db from '../../../../services/db';
+import { db } from '../../../../services/firebaseAdmin';
 import type {NextApiRequest, NextApiResponse} from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

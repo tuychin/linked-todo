@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
+import AuthProvider from '../context/Auth';
 import '../styles/globals.css'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <AuthProvider>
       <Head>
         <title>Linked-todo</title>
         <meta name="description" content="Linked-todo" />
@@ -19,7 +20,7 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-    </div>
+    </AuthProvider>
   );
 }
 
