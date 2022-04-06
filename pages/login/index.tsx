@@ -18,7 +18,7 @@ const Container = styled('div')({
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
   const { uid } = await verifyIdToken(cookies.token);
-  
+
   if (uid) {
     context.res.writeHead(302, { Location: "/" });
     context.res.end();
