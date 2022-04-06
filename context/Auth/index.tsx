@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
-import nookies from "nookies";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import React, { useState, useEffect, useContext, createContext } from 'react';
+import nookies from 'nookies';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebaseClient';
 
 const AuthContext = createContext({});
@@ -8,16 +8,16 @@ const AuthContext = createContext({});
 const login = async () => {
   try {
     await signInWithPopup(auth, new GoogleAuthProvider());
-    window.location.href = "/";
+    window.location.href = '/';
   } catch (err) {
-    alert(err)
+    alert(err);
   }
-}
+};
 
 const logout = async () => {
   await auth.signOut();
-  window.location.href = "/login";
-}
+  window.location.href = '/login';
+};
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -26,13 +26,13 @@ const AuthProvider = ({ children }) => {
     return auth.onIdTokenChanged(async (user) => {
       if (!user) {
         setUser(null);
-        nookies.set(undefined, "token", "", {});
+        nookies.set(undefined, 'token', '', {});
         return;
       }
 
       const token = await user.getIdToken();
       setUser(user);
-      nookies.set(undefined, "token", token, {});
+      nookies.set(undefined, 'token', token, {});
     });
   }, []);
 

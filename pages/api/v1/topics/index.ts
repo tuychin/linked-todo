@@ -1,5 +1,5 @@
 import { db } from '../../../../services/firebaseAdmin';
-import type {NextApiRequest, NextApiResponse} from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -9,8 +9,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ...topic.data()
     }));
 
-    res.status(200).json({topicsData});
+    res.status(200).json({ topicsData });
   } catch (evt) {
     res.status(400).end();
   }
-}
+};

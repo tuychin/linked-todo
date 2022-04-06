@@ -1,5 +1,5 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import type { NextPage } from 'next';
+import Head from 'next/head';
 import nookies from 'nookies';
 import { verifyIdToken } from '../services/firebaseAdmin';
 import { useAuth } from '../context/Auth';
@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
   const { uid, email } = await verifyIdToken(cookies.token);
 
   if (!uid) {
-    context.res.writeHead(302, { Location: "/login" });
+    context.res.writeHead(302, { Location: '/login' });
     context.res.end();
   
     return {
@@ -49,7 +49,7 @@ const Home: NextPage = ({ email }) => {
         Logout
       </Button>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
