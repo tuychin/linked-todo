@@ -1,18 +1,10 @@
 import admin from 'firebase-admin';
 import serviceAccount from '../../secret/serviceAccountSettings.json';
 
-const {
-  apps,
-  initializeApp,
-  credential,
-  auth,
-  firestore,
-} = admin;
-
-if (!apps.length) {
+if (!admin.apps.length) {
   try {
-    initializeApp({
-      credential: credential.cert(serviceAccount as admin.ServiceAccount)
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount as admin.ServiceAccount)
     });
   } catch (error: any) {
     console.error('Firebase admin initialization error', error.stack);
@@ -20,13 +12,11 @@ if (!apps.length) {
 }
 
 export const verifyIdToken = (token = '') => {
-  return auth()
+  return admin.auth()
     .verifyIdToken(token)
     .catch((err) => err);
 };
 
-export const db = firestore();
+export const db = admin.firestore();
 
 export default admin;
-
-
